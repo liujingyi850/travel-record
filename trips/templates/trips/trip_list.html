@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>我的旅行记录</title>
+</head>
+<body>
+  <h1>我的旅行记录</h1>
+
+  <p><a href="{% url 'trip_new' %}">＋新增旅行</a></p>
+
+  {% for trip in trips %}
+    <h2>{{ trip.place }}</h2>
+
+    <p>日期：{{ trip.date }}</p>
+    <p>同行者：{{ trip.with_who }}</p>
+    <p>{{ trip.memo }}</p>
+
+    <p>
+      <a href="{% url 'trip_edit' trip.id %}">编辑</a> |
+      <a href="{% url 'trip_delete' trip.id %}">删除</a>
+    </p>
+
+    <hr>
+  {% empty %}
+    <p>还没有旅行记录。</p>
+  {% endfor %}
+
+</body>
+</html>
+
