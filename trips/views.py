@@ -8,6 +8,7 @@ def trip_list(request):
 from django.shortcuts import render, redirect
 from .models import Trip
 
+@login_required
 def trip_new(request):
     if request.method == 'POST':
         place = request.POST.get('place', '')
